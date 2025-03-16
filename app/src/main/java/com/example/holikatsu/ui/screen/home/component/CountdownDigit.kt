@@ -12,28 +12,29 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.holikatsu.ui.theme.HoliKatsuTheme
+import com.example.holikatsu.ui.theme.PrimaryColor
 
 @Composable
 fun CountdownDigit(value: Int, label: String, width: Int) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             modifier = Modifier
-                .background(
-                    // TODO: 適当に色を指定しているため差し替える。
-                    color = MaterialTheme.colorScheme.errorContainer,
-                    shape = MaterialTheme.shapes.medium
-                )
                 .width(width.dp)
-                .aspectRatio(1f),
-            contentAlignment = Alignment.Center
+                .aspectRatio(1f)
+                .background(
+                    color = PrimaryColor, shape = MaterialTheme.shapes.medium
+                ), contentAlignment = Alignment.Center
         ) {
             Text(
                 text = value.toString(),
-                style = MaterialTheme.typography.displaySmall,
+                color = Color.White,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
             )
         }
@@ -41,7 +42,8 @@ fun CountdownDigit(value: Int, label: String, width: Int) {
         Text(
             text = label,
             style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
         )
     }
 }
@@ -51,9 +53,7 @@ fun CountdownDigit(value: Int, label: String, width: Int) {
 fun HomeScreenPreview() {
     HoliKatsuTheme {
         CountdownDigit(
-            value = 3,
-            label = "Days",
-            width = 64
+            value = 3, label = "Days", width = 64
         )
     }
 }
