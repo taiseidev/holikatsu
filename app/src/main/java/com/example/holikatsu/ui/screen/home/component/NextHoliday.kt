@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -25,8 +27,7 @@ import com.example.holikatsu.ui.theme.HoliKatsuTheme
 @Composable
 fun NextHoliday(modifier: Modifier = Modifier, nextHolidays: List<String>) {
     Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.End
+        modifier = modifier, horizontalAlignment = Alignment.End
     ) {
         Row(
             modifier = Modifier
@@ -57,6 +58,7 @@ fun NextHoliday(modifier: Modifier = Modifier, nextHolidays: List<String>) {
                 }
             }
         }
+        Spacer(modifier = Modifier.height(8.dp))
         Row(
             modifier = Modifier.padding(start = 8.dp),
             verticalAlignment = Alignment.CenterVertically,

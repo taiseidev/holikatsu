@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HoliKatsu</string>
+    <string name="home_motivation">休日を楽しむために\n今日も頑張りましょう！</string>
+    <string name="home_next_holiday">🏄 休日まで</string>
+    <string name="home_upcoming_holidays">🗓️ 次の休日</string>
+    <string name="home_plan_list">💡 予定一覧</string>
+    <string name="home_add_plan">休日の予定を追加</string>
 </resources>
