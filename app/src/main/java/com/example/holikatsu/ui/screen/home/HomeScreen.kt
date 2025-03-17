@@ -13,6 +13,8 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,22 +36,22 @@ import com.example.holikatsu.ui.theme.ScaffoldBackground
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(viewModel: HomeViewModel) {
+    val remainingTime by viewModel.remainingTime.collectAsState()
+    val nextHolidays by viewModel.nextHolidays.collectAsState()
+    val plans by viewModel.plans.collectAsState()
+    val dayType by viewModel.dayType.collectAsState()
+
     HomeScreenContent(
         // TODO: Digitのサイズをハードコーディングしているので修正
-        digitWidth = 70, days = 6, hours = 12, minutes = 30, seconds = 45, nextHolidays = listOf(
-            "12/03", "12/04", "12/03", "12/04", "12/03", "12/04", "12/03", "12/04"
-        ), plans = listOf(
-            Plan(
-                id = 0, title = "映画鑑賞", description = "ららぽーとに行って映画を鑑賞する。"
-            ),
-            Plan(
-                id = 1, title = "プログラミング", description = "個人開発を行う。"
-            ),
-            Plan(
-                id = 2, title = "Netflix", description = "好きな映画を観る。"
-            ),
-        ), dayType = DayType.Holiday
+        digitWidth = 70,
+        days = remainingTime.days.toInt(),
+        hours = remainingTime.hours.toInt(),
+        minutes = remainingTime.minutes.toInt(),
+        seconds = remainingTime.seconds.toInt(),
+        nextHolidays = nextHolidays,
+        plans = plans,
+        dayType = dayType
     )
 }
 
