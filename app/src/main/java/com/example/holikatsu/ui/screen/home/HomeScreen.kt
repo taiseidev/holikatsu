@@ -42,17 +42,19 @@ fun HomeScreen(viewModel: HomeViewModel) {
     val plans by viewModel.plans.collectAsState()
     val dayType by viewModel.dayType.collectAsState()
 
-    HomeScreenContent(
-        // TODO: Digitのサイズをハードコーディングしているので修正
-        digitWidth = 70,
-        days = remainingTime.days.toInt(),
-        hours = remainingTime.hours.toInt(),
-        minutes = remainingTime.minutes.toInt(),
-        seconds = remainingTime.seconds.toInt(),
-        nextHolidays = nextHolidays,
-        plans = plans,
-        dayType = dayType
-    )
+    dayType?.let {
+        HomeScreenContent(
+            // TODO: Digitのサイズをハードコーディングしているので修正
+            digitWidth = 70,
+            days = remainingTime?.days?.toInt() ?: 0,
+            hours = remainingTime?.hours?.toInt() ?: 0,
+            minutes = remainingTime?.minutes?.toInt() ?: 0,
+            seconds = remainingTime?.seconds?.toInt() ?: 0,
+            nextHolidays = nextHolidays,
+            plans = plans,
+            dayType = it
+        )
+    }
 }
 
 @Composable

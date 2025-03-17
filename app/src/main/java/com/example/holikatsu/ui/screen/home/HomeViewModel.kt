@@ -65,26 +65,26 @@ class HomeViewModel(
     private fun updateRemainingTime() {
         val current = _remainingTime.value
         val newTime = when {
-            current.days.toInt() == 0 && current.hours.toInt() == 0 && current.minutes.toInt() == 0 && current.seconds.toInt() == 0 -> {
+            current?.days?.toInt() == 0 && current.hours.toInt() == 0 && current.minutes.toInt() == 0 && current.seconds.toInt() == 0 -> {
                 getNextHolidayOrWeekendUseCase().let {
                     calculateRemainingTimeUseCase(it, System.currentTimeMillis())
                 }
             }
 
-            current.hours.toInt() == 0 && current.minutes.toInt() == 0 && current.seconds.toInt() == 0 -> {
+            current?.hours?.toInt() == 0 && current.minutes.toInt() == 0 && current.seconds.toInt() == 0 -> {
                 current.copy(days = current.days - 1, hours = 23, minutes = 59, seconds = 59)
             }
 
-            current.minutes.toInt() == 0 && current.seconds.toInt() == 0 -> {
+            current?.minutes?.toInt() == 0 && current.seconds.toInt() == 0 -> {
                 current.copy(hours = current.hours - 1, minutes = 59, seconds = 59)
             }
 
-            current.seconds.toInt() == 0 -> {
+            current?.seconds?.toInt() == 0 -> {
                 current.copy(minutes = current.minutes - 1, seconds = 59)
             }
 
             else -> {
-                current.copy(seconds = current.seconds - 1)
+                current?.copy(seconds = current.seconds - 1)
             }
         }
         _remainingTime.value = newTime
