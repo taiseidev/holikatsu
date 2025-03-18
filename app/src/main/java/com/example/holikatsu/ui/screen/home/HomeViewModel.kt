@@ -10,14 +10,16 @@ import com.example.holikatsu.domain.usecase.CalculateRemainingTimeUseCase
 import com.example.holikatsu.domain.usecase.GetDayTypeUseCase
 import com.example.holikatsu.domain.usecase.GetNextHolidayOrWeekendUseCase
 import com.example.holikatsu.domain.usecase.GetNextPlansUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class HomeViewModel(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val calculateRemainingTimeUseCase: CalculateRemainingTimeUseCase,
     private val calculateConsecutiveHolidaysUseCase: CalculateConsecutiveHolidaysUseCase,
     private val getNextHolidayOrWeekendUseCase: GetNextHolidayOrWeekendUseCase,

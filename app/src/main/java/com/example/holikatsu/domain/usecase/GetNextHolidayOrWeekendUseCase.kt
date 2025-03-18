@@ -2,11 +2,12 @@ package com.example.holikatsu.domain.usecase
 
 import java.text.SimpleDateFormat
 import java.util.Locale
+import javax.inject.Inject
 
 /**
  * 次の祝日または土日または平日を取得するユースケース
  */
-class GetNextHolidayOrWeekendUseCase {
+class GetNextHolidayOrWeekendUseCase @Inject constructor() {
     operator fun invoke(): Long {
         // TODO: 修正する
         /**

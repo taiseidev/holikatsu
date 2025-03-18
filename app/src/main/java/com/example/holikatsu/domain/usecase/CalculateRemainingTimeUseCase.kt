@@ -2,14 +2,14 @@ package com.example.holikatsu.domain.usecase
 
 import com.example.holikatsu.domain.model.RemainingTime
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 /**
  * 指定した日時までの残り時間を計算するユースケース
  */
-class CalculateRemainingTimeUseCase {
+class CalculateRemainingTimeUseCase @Inject constructor() {
     operator fun invoke(
-        targetMillis: Long,
-        currentMillis: Long = System.currentTimeMillis()
+        targetMillis: Long, currentMillis: Long = System.currentTimeMillis()
     ): RemainingTime {
         val remainingMillis = maxOf(targetMillis - currentMillis, 0L)
 

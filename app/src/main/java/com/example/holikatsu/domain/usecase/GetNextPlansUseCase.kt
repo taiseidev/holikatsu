@@ -1,11 +1,12 @@
 package com.example.holikatsu.domain.usecase
 
 import com.example.holikatsu.domain.model.Plan
+import javax.inject.Inject
 
 /**
  * 次の休日の予定を取得するユースケース
  */
-class GetNextPlansUseCase {
+class GetNextPlansUseCase @Inject constructor() {
     operator fun invoke(): List<Plan> {
         // TODO: 次の休日の予定を取得する
         return listOf(

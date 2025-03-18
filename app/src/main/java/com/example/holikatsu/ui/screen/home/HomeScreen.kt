@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.holikatsu.R
 import com.example.holikatsu.domain.model.DayType
 import com.example.holikatsu.domain.model.Plan
@@ -36,7 +37,7 @@ import com.example.holikatsu.ui.theme.ScaffoldBackground
 
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel) {
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
     val remainingTime by viewModel.remainingTime.collectAsState()
     val nextHolidays by viewModel.nextHolidays.collectAsState()
     val plans by viewModel.plans.collectAsState()
