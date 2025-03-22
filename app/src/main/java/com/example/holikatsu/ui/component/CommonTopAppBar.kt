@@ -25,8 +25,7 @@ fun CommonTopAppBar(
     onActionIconClick: () -> Unit,
 ) {
     TopAppBar(
-        modifier = modifier,
-        title = {
+        modifier = modifier, title = {
             Text(stringResource(R.string.app_name), fontWeight = FontWeight.Bold)
         }, actions = {
             IconButton(
@@ -50,7 +49,6 @@ fun CommonTopAppBar(
 fun CommonTopAppBarPreview() {
     HoliKatsuTheme {
         CommonTopAppBar(
-            onActionIconClick = { }
-        )
+            onActionIconClick = { })
     }
 }

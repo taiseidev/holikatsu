@@ -1,4 +1,4 @@
-package com.example.holikatsu.datasource.remote.model
+package com.example.holikatsu.data.datasource.remote.model
 
 import kotlinx.serialization.Serializable
 
