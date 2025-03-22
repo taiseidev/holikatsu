@@ -122,7 +122,10 @@ class HomeViewModel @Inject constructor(
             TimeState.MinuteAndSecondZero -> currentRemainingTime.decrementHour()
             TimeState.SecondZero -> currentRemainingTime.decrementMinute()
             TimeState.CountingDown -> currentRemainingTime.decrementSecond()
-            null -> TODO()
+            null -> {
+                // TODO: エラーハンドリング
+                throw Exception("RemainingTime is null")
+            }
         }
     }
 }

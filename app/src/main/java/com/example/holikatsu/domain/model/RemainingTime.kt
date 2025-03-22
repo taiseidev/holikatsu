@@ -10,33 +10,25 @@ data class RemainingTime(
 fun RemainingTime.toTimeState(): TimeState {
     return when {
         days == 0L && hours == 0L && minutes == 0L && seconds == 0L -> TimeState.ZeroTimeRemaining
-        days == 0L && hours == 0L && minutes == 0L && seconds > 0L -> TimeState.TimeZero
-        days == 0L && hours == 0L && minutes > 0L && seconds == 0L -> TimeState.MinuteAndSecondZero
-        days == 0L && hours > 0L -> TimeState.CountingDown
+        hours == 0L && minutes == 0L && seconds == 0L -> TimeState.TimeZero
+        minutes == 0L && seconds == 0L -> TimeState.MinuteAndSecondZero
+        seconds == 0L -> TimeState.SecondZero
         else -> TimeState.CountingDown
     }
 }
 
-fun RemainingTime.decrementDay(): RemainingTime {
-    return this.copy(
-        days = this.days - 1, hours = 23, minutes = 59, seconds = 59
-    )
-}
+fun RemainingTime.decrementDay(): RemainingTime = this.copy(
+    days = this.days - 1, hours = 23, minutes = 59, seconds = 59
+)
 
-fun RemainingTime.decrementHour(): RemainingTime {
-    return this.copy(
-        hours = this.hours - 1, minutes = 59, seconds = 59
-    )
-}
+fun RemainingTime.decrementHour(): RemainingTime = this.copy(
+    hours = this.hours - 1, minutes = 59, seconds = 59
+)
 
-fun RemainingTime.decrementMinute(): RemainingTime {
-    return this.copy(
-        minutes = this.minutes - 1, seconds = 59
-    )
-}
+fun RemainingTime.decrementMinute(): RemainingTime = this.copy(
+    minutes = this.minutes - 1, seconds = 59
+)
 
-fun RemainingTime.decrementSecond(): RemainingTime {
-    return this.copy(
-        seconds = this.seconds - 1
-    )
-}
+fun RemainingTime.decrementSecond(): RemainingTime = this.copy(
+    seconds = this.seconds - 1
+)
