@@ -17,13 +17,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.holikatsu.domain.model.Plan
 import com.example.holikatsu.ui.theme.HoliKatsuTheme
-import com.example.holikatsu.ui.theme.LightGrayText
-import com.example.holikatsu.ui.theme.PrimaryColor
-import com.example.holikatsu.ui.theme.TextPrimaryColor
 
 @Composable
 fun PlanListItem(plan: Plan) {
@@ -39,7 +37,7 @@ fun PlanListItem(plan: Plan) {
                 modifier = Modifier
                     .size(60.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(color = PrimaryColor), contentAlignment = Alignment.Center
+                    .background(color = Color(0xFFE57373)), contentAlignment = Alignment.Center
 
             ) {
                 Icon(
@@ -51,10 +49,10 @@ fun PlanListItem(plan: Plan) {
             }
         },
         headlineContent = {
-            Text(plan.title, color = TextPrimaryColor)
+            Text(plan.title, color = Color(0xFF333333), fontWeight = FontWeight.Bold)
         },
         supportingContent = {
-            Text(plan.description, color = LightGrayText)
+            Text(plan.description, color = Color(0xFF777777), fontWeight = FontWeight.Bold)
         },
     )
 }
